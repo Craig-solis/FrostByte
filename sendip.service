@@ -1,0 +1,11 @@
+[Unit]
+Description=Send IP address via email after boot
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/send_ip_email.sh
+
+[Install]
+WantedBy=multi-user.target
