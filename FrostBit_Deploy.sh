@@ -5,6 +5,12 @@ SCRIPT_NAME="send_ip_email.sh"
 SERVICE_NAME="sendip.service"
 SMTP_CONFIG="/etc/msmtprc"
 
+#Verifying Contents
+if [[! -f $SCRIPT_NAME ]] || [[ ! -f $SERVICE_NAME ]]; then
+  echo "Error: Required files not found!"
+  exit 1
+fi
+
 # Update packages and install dependencies
 echo "Installing Dependencies..."
 sudo apt update && sudo apt install -y msmtp msmtp-mta
